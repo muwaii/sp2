@@ -4,7 +4,7 @@ const femaleRadio = document.querySelector('#female-radio');
 const checkboxSelected = document.querySelector('#checkbox-input');
 const btnEle = document.querySelector('#button');
 
-// to check if tha values are valid 
+// to check if the values are valid 
 nameInput.addEventListener('input', validate);
 maleRadio.addEventListener('change', validate);
 femaleRadio.addEventListener('change', validate);
@@ -18,7 +18,7 @@ function validate() {
 }
 
 const inputData = []; 
-function addValue() {
+btnEle.addEventListener('click', () => {
   const genderSelected = document.querySelector('input[type="radio"]:checked');
   const genderValue = genderSelected.value;
   const data = {
@@ -30,4 +30,4 @@ function addValue() {
   // to clear the form
   document.forms[0].reset();
   console.log(inputData);
-}
+});
