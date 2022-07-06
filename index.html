@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>SP#2</title>
 </head>
 <body>
+  <h1>Special point #2</h1>
   <form>
     <div>
-      <label>Name: </label> <input id="name-input" type="text" />
+      <label>Name: </label> <input id="name-input" type="text" pattern="[a-zA-Z]*" />
     </div>
     <div>
       <input id="male-radio" type="radio" name="gender" value="Male" />
@@ -21,7 +22,7 @@
       <input id="checkbox-input" type="checkbox" />
       <label>Accept</label>
     </div><br>
-    <input id="button" type="button" value="Click to add" />
+    <input id="button" type="button" value="Click to add" disabled />
   </form>
   <section id="data"></section>
   <script src="main.js" style="padding-top: 10px;"></script>
