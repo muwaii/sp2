@@ -10,16 +10,30 @@ nameInput.addEventListener('input', validate);
 maleRadio.addEventListener('change', validate);
 femaleRadio.addEventListener('change', validate);
 checkboxSelected.addEventListener('change', validate);
+
 function validate() {
-  if(nameInput.value!=='' && (maleRadio.checked||femaleRadio.checked) && checkboxSelected.checked) {
+  const letters = /^[A-Za-z]+$/;
+
+  if(nameInput.value!=='' && (maleRadio.checked||femaleRadio.checked) && checkboxSelected.checked && nameInput.value.match(letters)) {
     btnEle.removeAttribute('disabled');
   } else {
     btnEle.setAttribute('disabled', 'disabled');
   }
+
+  if((nameInput.value.match(letters)) || (nameInput.value === '')) {
+    return;
+  } else {
+    alert('Opps! The "Name" must be text');
+    nameInput.value = '';
+  }
 }
 
+
 const inputData = []; 
+
 btnEle.addEventListener('click', () => {
+  btnEle.disabled = true;
+
   const genderSelected = document.querySelector('input[type="radio"]:checked');
   const genderValue = genderSelected.value;
   const data = {
@@ -28,9 +42,9 @@ btnEle.addEventListener('click', () => {
     accept: checkboxSelected.checked
   }
   inputData.push(data);
+
   // to clear the form
   document.forms[0].reset();
-  console.log(inputData);
 
   // to clear all child element
   while(dataEle.lastElementChild) {
@@ -46,5 +60,5 @@ btnEle.addEventListener('click', () => {
     dataEle.appendChild(genderEle).innerHTML = '&nbsp&nbsp&nbsp&nbspGender : ' + ele.gender;
     const accpeptEle = document.createElement('div');
     dataEle.appendChild(accpeptEle).innerHTML =  '&nbsp&nbsp&nbsp&nbspAccept : ' + ele.accept;
-  })
+  });
 });
